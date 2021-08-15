@@ -11,7 +11,7 @@ def index():
 def predict():
     title = request.form.get('title')
     if title not in recommendation.final_rating['title'].unique():
-        response = ['Book not found']
+        response = -1
     else:
         response = recommendation.recommend(title)
 
