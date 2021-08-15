@@ -5,67 +5,69 @@
     <title>Book Recommender System</title>
     <style>
         body{
-          text-align:center;
-          background:url('https://slimbridgeprimaryschool.org.uk/wp-content/uploads/2017/01/DSC05371.jpg');
-          background-repeat: no-repeat;
-          background-size:cover;
-          }
+            background-image: url("https://i.imgur.com/jrLg81x.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: whitesmoke;
+
+        }
          h1{
-        padding-top:2%;
-        color:white;
+            text-align: center;
+            color: chartreuse;
+            font-style: bold;
+            font-family: Algerian;
+            font-size: 50px;
         }
-        h3{
-        color:#008000;
+        p{
+            margin: auto;
+            text-align: center;
+            font-style: bold;
+            font-size: 25px;
+            color: black;
+            font-family: Cambria;
         }
-
-        .top{
-        margin:5px 550px 5px 550px;
-        padding:40px 0px 40px 0px;
-        background-color:#9C9CFF;
+        textarea {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                font-family: Verdana;
+                font-style: bold;
         }
-        .notfound{
-        margin:5px 550px 5px 550px;
-        padding:40px 0px 40px 0px;
-        background-color:#FF6347;
+         #submit {
+             color: crimson;
+             background-color: dodgerblue;
+             margin: auto;
+             padding: 5px;
+             font-family: Verdana;
+             font-weight: bold;
+             font-size: 15px;
+             border-radius: 6px;
+             width: 30%;
+         }
+          .result{
+            font-style: bold;
+            font-size: 20px;
         }
-        input{
-           padding:10px 50px 10px 10px;
-        }
-        button
-        {
-           padding:10px 30px;
-           background-color:#32CD32;
-           color:white;
-        }
-
     </style>
 </head>
 <body>
-
-
-      <h1>Book Recommender System</h1>
-      <form action="/recommend" method="post">
-
-         <center><input type="text" placeholder="Search your favourite book" name="title" required></center><br>
-         <button type="submit" value="Search"><b>Search</b></button>
-
-     </form><br>
-      {% if response %}
-        {% if response|length == 1 %}
-          <div class="notfound">
-            <h2 style="color:#800000">Book not found</h2>
-          </div>
-
-        {% else %}
-          <div class="top">
-            <h2 style="color:#006400">Top 5 Books</h2><br>
-            {% for i in response %}
-               <h3>{{i}}</h3>
-            {% endfor %}
-          </div>
+    <h1>BOOK RECOMMENDER</h1>
+    <p>Wondering what to read next?<br><br>Then enter a book name to get recommendations:</p><br><br>
+   <form action="/recommend" method="post">
+        <textarea rows="3" cols="30" name="movie" class="text" placeholder="Enter Book Name" required></textarea><br><br>
+        <p><input type="submit" id="submit" value="Click me to get recommendation"></p><br>
+   </form><br>
+    <div class="result">
+        {% if response %}
+            {% if response|length == 1 %}
+                <p style="color:red">Sorry!!! We don't know about this book</p>
+            {% else %}
+                <p style="color:red">Your are recommended:</p>
+                {% for i in response %}
+                    <p style="color: cyan">{{ i }}</p>
+                {% endfor %}
+            {% endif %}
         {% endif %}
-      {% endif %}
-
-
+    </div>
 </body>
 </html>
