@@ -1,4 +1,4 @@
-Flask==1.1.2
+Flask==2.1.0
 recommendation==0.3.1
 scipy==1.7.0
 numpy==1.19.3
